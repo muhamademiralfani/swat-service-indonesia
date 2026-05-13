@@ -2,67 +2,86 @@ import React from 'react';
 
 const Legality = () => {
   return (
-    <section id="legality" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+    <section id="legality" className="py-32 bg-white overflow-hidden">
+      <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-24">
+        
+        {/* Kolom Visual: Sertifikat Gada Utama */}
+        <div className="lg:w-1/2 relative">
+          {/* Efek Cahaya Latar */}
+          <div className="absolute -inset-10 bg-[#FFD700]/10 rounded-full blur-[100px] animate-pulse"></div>
           
-          {/* Gambar/Ikon Sertifikat */}
-          <div className="lg:w-1/2 w-full">
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-secondary/20 rounded-xl blur-lg group-hover:bg-secondary/30 transition duration-500"></div>
-              <div className="relative bg-accent border-2 border-primary/10 p-8 rounded-xl shadow-2xl">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="bg-primary text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">
-                    Verified License
-                  </div>
-                  <span className="text-primary/20 font-serif italic text-4xl">SSI</span>
+          <div className="relative group">
+            <div className="absolute inset-0 bg-[#001F3F] rounded-[50px] rotate-6 group-hover:rotate-3 transition-transform duration-500"></div>
+            <div className="relative bg-[#F8FAFC] border-2 border-[#001F3F] p-10 md:p-14 rounded-[50px] shadow-2xl transition-all">
+              <div className="flex justify-between items-start mb-8">
+                <div className="bg-[#001F3F] text-white text-[10px] px-4 py-1.5 rounded-full font-bold uppercase tracking-[0.2em]">
+                  Verified License
                 </div>
-                <h4 className="text-xl font-bold text-primary mb-2">SERTIFIKASI GADA UTAMA</h4>
-                <p className="text-gray-500 text-sm mb-6">
-                  Kualifikasi pelatihan satuan pengamanan tingkat manajerial tertinggi.
-                </p>
-                <div className="border-t border-gray-200 pt-6 space-y-3">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-gray-400">Penyelenggara:</span>
-                    <span className="font-bold text-primary">Mabes Polri</span>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-gray-400">Kualifikasi:</span>
-                    <span className="font-bold text-primary uppercase">Gada Utama</span>
-                  </div>
+                <div className="text-[#001F3F]/10 font-black text-4xl italic leading-none">SSI</div>
+              </div>
+              
+              <h4 className="text-3xl font-black text-[#001F3F] mb-4 italic leading-tight">GADA UTAMA</h4>
+              <p className="text-gray-500 text-sm leading-relaxed mb-10">
+                Sertifikasi kualifikasi pelatihan satuan pengamanan tingkat manajerial tertinggi dari Mabes Polri.
+              </p>
+              
+              <div className="space-y-4 border-t border-gray-200 pt-8">
+                <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                  <span>Penyelenggara</span>
+                  <span className="text-[#001F3F]">Mabes Polri</span>
+                </div>
+                <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                  <span>Kualifikasi</span>
+                  <span className="text-[#001F3F]">Chief Security</span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Teks Penjelasan */}
-          <div className="lg:w-1/2 w-full">
-            <h2 className="text-primary font-bold tracking-widest mb-4 uppercase">Keamanan Terjamin</h2>
-            <h3 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-              Legalitas & Lisensi <br /> <span className="text-secondary">Profesional</span>
-            </h3>
-            <p className="text-gray-600 mb-8 leading-relaxed">
-              PT. Swat Service Indonesia (PT. SSI) beroperasi dengan izin resmi dari Pemerintah Republik Indonesia melalui sistem Perizinan Berusaha Berbasis Risiko[cite: 45]. Kami memastikan setiap personel memiliki kompetensi yang diakui secara nasional.
-            </p>
-            
-            <ul className="grid gap-4">
-              {[
-                "Berlisensi Resmi (NIB/Perizinan Berusaha)",
-                "Tenaga Ahli Bersertifikat Gada Utama",
-                "Bekerja sama dengan Brimob Polri",
-                "Kepatuhan Standar K3"
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 font-semibold text-primary">
-                  <div className="w-6 h-6 bg-secondary flex items-center justify-center rounded-full text-[10px]">
-                    ✓
-                  </div>
-                  {item}
-                </li>
-              ))}
-            </ul>
+        {/* Kolom Teks: Legalitas & Kemitraan */}
+        <div className="lg:w-1/2">
+          <h2 className="text-[#FFD700] font-bold tracking-[0.3em] uppercase text-xs mb-4 flex items-center gap-3">
+            <span className="w-10 h-[2px] bg-[#FFD700]"></span>
+            Kepatuhan & Legalitas
+          </h2>
+          <h3 className="text-4xl md:text-5xl font-black text-[#001F3F] mb-8 leading-tight">
+            Beroperasi Dengan <br /> Izin Resmi Negara
+          </h3>
+          <p className="text-gray-600 mb-10 leading-relaxed text-lg">
+            PT. Swat Service Indonesia (SSI) adalah penyedia jasa profesional yang berlisensi dan beroperasi di bawah sistem Perizinan Berusaha Berbasis Risiko Pemerintah Republik Indonesia.
+          </p>
+          
+          {/* Poin-Poin Legalitas Dasar */}
+          <div className="grid sm:grid-cols-2 gap-6 mb-12">
+            {[
+              "Perizinan Berbasis Risiko",
+              "Izin Operasional Polri",
+              "Sertifikat Gada Utama",
+              "Kerja Sama Brimob"
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-4 group">
+                <div className="w-8 h-8 rounded-lg bg-[#001F3F] flex items-center justify-center text-[#FFD700] text-sm group-hover:scale-110 transition-transform">
+                  ✓
+                </div>
+                <span className="text-sm font-bold text-[#001F3F] uppercase tracking-wider">{item}</span>
+              </div>
+            ))}
           </div>
 
+          <div className="flex gap-12 border-t border-gray-100 pt-10">
+            <div>
+              <p className="text-4xl font-black text-[#001F3F]">100%</p>
+              <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest mt-1">Compliance</p>
+            </div>
+            <div className="w-px h-12 bg-gray-200"></div>
+            <div>
+              <p className="text-4xl font-black text-[#001F3F]">POLRI</p>
+              <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest mt-1">Strategic Partner</p>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
   );
