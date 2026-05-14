@@ -1,56 +1,64 @@
 import React, { useState, useEffect } from 'react';
+// 1. Import Logo dari assets
+import LogoSSI from '../assets/logo-ssi.png'; 
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav className={`fixed w-full z-[100] transition-all duration-700 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-gray-100' : 'bg-transparent py-8'
-    }`}>
-      <div className="container mx-auto px-8 flex justify-between items-center">
-        {/* Logo Section */}
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 bg-brandNavy flex items-center justify-center font-serif font-black text-white text-lg">SSI</div>
-          <div className="flex flex-col border-l border-gray-300 pl-4">
-            <span className={`font-black tracking-tighter text-md uppercase transition-colors duration-500 ${isScrolled ? 'text-brandNavy' : 'text-white'}`}>
-              PT SWAT SERVICE
-            </span>
-            <span className="text-brandRed text-[9px] font-bold tracking-[0.3em] uppercase">
-              Indonesia
-            </span>
+    <nav className={`fixed w-full z-50 bg-white transition-all duration-300 ${isScrolled ? 'shadow-md' : 'border-b border-gray-100'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-20">
+          <div className="flex items-center">
+            {/* Logo Section */}
+            <a href="#" className="flex items-center gap-2 group">
+              {/* 2. Kotak Biru sebagai Container Logo */}
+              <div className="w-15 h-15  flex items-center justify-center transform group-hover:scale-105 transition duration-300 overflow-hidden p-1.5">
+                {/* 3. Tag Img Logo */}
+                <img 
+                  src={LogoSSI} 
+                  alt="Logo PT SWAT Service Indonesia" 
+                  className="w-full h-full object-contain brightness-100" 
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <span className="text-swat-red font-extrabold text-2xl leading-none tracking-tight">SWAT</span>
+                <span className="text-swat-blue font-bold text-[10px] tracking-widest leading-none mt-1">SERVICE INDONESIA</span>
+              </div>
+            </a>
+          </div>
+          
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#tentang" className="text-swat-blue font-medium hover:text-swat-red transition duration-300">Tentang Kami</a>
+            <a href="#layanan" className="text-swat-blue font-medium hover:text-swat-red transition duration-300">Layanan</a>
+            <a href="#klien" className="text-swat-blue font-medium hover:text-swat-red transition duration-300">Klien</a>
+            <a href="#kontak" className="bg-swat-red text-white px-6 py-2.5 rounded-full font-semibold hover:bg-red-700 hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300">Hubungi Kami</a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-swat-blue hover:text-swat-red focus:outline-none">
+              <i className={`fa-solid ${isMenuOpen ? 'fa-xmark' : 'fa-bars'} text-2xl`}></i>
+            </button>
           </div>
         </div>
-        
-        {/* Navigation Links */}
-        <div className="hidden lg:flex items-center space-x-12">
-          {['Tentang', 'Layanan', 'Legalitas', 'Klien'].map((item) => (
-            <a 
-              key={item} 
-              href={`#${item.toLowerCase()}`} 
-              className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 hover:text-brandRed relative group ${
-                isScrolled ? 'text-brandNavy' : 'text-white'
-              }`}
-            >
-              {item}
-              <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-brandRed transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
-          
-          {/* Action Button */}
-          <button className="bg-brandNavy text-white px-8 py-3 text-[10px] font-black uppercase tracking-widest hover:bg-brandRed transition-all duration-500 shadow-lg shadow-brandNavy/10">
-            Hubungi Kami
-          </button>
-        </div>
+      </div>
 
-        {/* Mobile Menu Icon (Opsional) */}
-        <div className={`lg:hidden text-2xl ${isScrolled ? 'text-brandNavy' : 'text-white'}`}>
-          <span className="cursor-pointer">☰</span>
+      {/* Mobile Menu Panel */}
+      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full`}>
+        <div className="px-4 pt-2 pb-6 space-y-1">
+          <a href="#tentang" onClick={() => setIsMenuOpen(false)} className="block px-3 py-3 text-swat-blue font-medium hover:bg-gray-50 rounded-md">Tentang Kami</a>
+          <a href="#layanan" onClick={() => setIsMenuOpen(false)} className="block px-3 py-3 text-swat-blue font-medium hover:bg-gray-50 rounded-md">Layanan</a>
+          <a href="#klien" onClick={() => setIsMenuOpen(false)} className="block px-3 py-3 text-swat-blue font-medium hover:bg-gray-50 rounded-md">Klien</a>
+          <a href="#kontak" onClick={() => setIsMenuOpen(false)} className="block mt-4 text-center bg-swat-red text-white px-6 py-3 rounded-full font-semibold hover:bg-red-700">Hubungi Kami</a>
         </div>
       </div>
     </nav>

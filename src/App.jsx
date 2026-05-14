@@ -1,29 +1,26 @@
-import Footer from './components/Footer';
+import React from 'react';
 import Navbar from './components/Navbar';
-import About from './sections/About';
-import Clients from './sections/Clients';
-import Contact from './sections/Contact';
+import Footer from './components/Footer';
 import Hero from './sections/Hero';
-
-import Legality from './sections/Legality';
+import About from './sections/About';
 import Services from './sections/Services';
+import Legality from './sections/Legality';
+import Gallery from './sections/Gallery'; // <-- Import komponen baru
+import Clients from './sections/Clients';
 
-function App() {
+export default function App() {
   return (
-    <div>
+    <div className="antialiased font-sans text-[#333333] bg-white">
       <Navbar />
       <main>
         <Hero />
         <About />
-        <Legality />
-        <Clients />
         <Services />
-        <Contact />
-        {/* Section lain akan menyusul di sini */}
+        <Legality />
+        <Gallery /> {/* <-- Panggil di sini */}
+        <Clients />
       </main>
       <Footer />
     </div>
   );
 }
-
-export default App;
